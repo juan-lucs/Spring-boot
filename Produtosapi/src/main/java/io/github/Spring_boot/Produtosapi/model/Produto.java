@@ -1,9 +1,26 @@
 package io.github.Spring_boot.Produtosapi.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "produtos")
 public class Produto {
-    int id;
+
+    @Id
+    @Column
+    String id;
+
+    @Column
     String nome;
+
+    @Column
     String descricao;
+
+    @Column
     double preco;
 
     public String getDescricao() {
@@ -14,11 +31,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
