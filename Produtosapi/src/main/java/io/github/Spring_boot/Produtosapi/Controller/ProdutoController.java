@@ -4,6 +4,7 @@ import io.github.Spring_boot.Produtosapi.model.Produto;
 import io.github.Spring_boot.Produtosapi.repository.produtoRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController // Informa ao Spring que esta classe possui endpoints REST.
@@ -28,8 +29,18 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}") // quando eu quero que ele receba uma variável na url eu coloco {}
-    public Produto obterPorId(@PathVariable /* dizendo que esse String id vem do Path*/String id){
+    public Produto obterPorId(@PathVariable /* dizendo que esse String id ve m do Path*/String id){
      return produtoRepository.findById(id).orElseGet(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable String id) {
+        produtoRepository.deleteById(id);
+    }
+
+    @GetMapping("/todos")
+    public List<Produto> obterTodos(){
+        return produtoRepository.findAll();
     }
 }
 
