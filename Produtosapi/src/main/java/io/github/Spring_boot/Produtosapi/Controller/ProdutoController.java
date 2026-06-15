@@ -42,5 +42,11 @@ public class ProdutoController {
     public List<Produto> obterTodos(){
         return produtoRepository.findAll();
     }
+
+    @PutMapping("{id}")
+    public Produto atualziar(@PathVariable String id, @RequestBody Produto produto){
+        produto.setId(id);
+        return produtoRepository.save(produto); // save pode salvar a primeira vez e também pode atualizar, ele verifica quando o produto já tem .setId para ver se vai atualizar ou criar um novo
+    }
 }
 
