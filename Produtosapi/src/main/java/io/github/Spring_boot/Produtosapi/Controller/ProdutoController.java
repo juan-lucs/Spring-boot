@@ -48,5 +48,9 @@ public class ProdutoController {
         produto.setId(id);
         return produtoRepository.save(produto); // save pode salvar a primeira vez e também pode atualizar, ele verifica quando o produto já tem .setId para ver se vai atualizar ou criar um novo
     }
+
+    public List<Produto> buscarPorNome(@RequestParam("nome") String nome){
+        return produtoRepository.findByNome(nome);
+    }
 }
 
