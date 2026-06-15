@@ -2,10 +2,7 @@ package io.github.Spring_boot.Produtosapi.Controller;
 
 import io.github.Spring_boot.Produtosapi.model.Produto;
 import io.github.Spring_boot.Produtosapi.repository.produtoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -30,4 +27,9 @@ public class ProdutoController {
         return produto; // isso da uma resposta ao Postman, para facilitar se funcionou ou não. retorna em json, assim como foi r3ecebdio
     }
 
+    @GetMapping("/{id}") // quando eu quero que ele receba uma variável na url eu coloco {}
+    public Produto obterPorId(@PathVariable /* dizendo que esse String id vem do Path*/String id){
+     return produtoRepository.findById(id).orElseGet(null);
+    }
 }
+
