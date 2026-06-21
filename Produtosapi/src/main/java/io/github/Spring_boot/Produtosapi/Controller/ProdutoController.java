@@ -30,7 +30,7 @@ public class ProdutoController {
 
     @GetMapping("/{id}") // quando eu quero que ele receba uma variável na url eu coloco {}
     public Produto obterPorId(@PathVariable /* dizendo que esse String id ve m do Path*/String id){
-     return produtoRepository.findById(id).orElseGet(null);
+     return produtoRepository.findById(id).orElse(null);
     }
 
     @DeleteMapping("/{id}")
@@ -49,6 +49,7 @@ public class ProdutoController {
         return produtoRepository.save(produto); // save pode salvar a primeira vez e também pode atualizar, ele verifica quando o produto já tem .setId para ver se vai atualizar ou criar um novo
     }
 
+    @GetMapping("/buscar")
     public List<Produto> buscarPorNome(@RequestParam("nome") String nome){
         return produtoRepository.findByNome(nome);
     }
