@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TesteFabricaController {
 
     @Autowired // isso pede para que a Spring procure um Bean já registrao do tipo Motor, ela associa sozinha os dois.
-    @Qualifier("motorEletrico") //serve para especificar quando se tem mais de um Bean de um tipo
+    //@Qualifier //serve para especificar quando se tem mais de um Bean de um tipoo
     private Motor motorviaspring;
 
     @PostMapping

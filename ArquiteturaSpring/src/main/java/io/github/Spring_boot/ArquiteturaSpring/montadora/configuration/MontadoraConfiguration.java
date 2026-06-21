@@ -4,12 +4,14 @@ import io.github.Spring_boot.ArquiteturaSpring.montadora.Motor;
 import io.github.Spring_boot.ArquiteturaSpring.montadora.TipoMotor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration // agora o Spring vai escanear essa classe  e podemos definir os beans
 public class MontadoraConfiguration {
 
     @Bean // Posso utilizar injeção de dependência, registrar no container, injetar dentro do carro
     // Bean é quando você cria um método que retorna um ONBJETO construido
+    @Primary // se eu nao especificar com o Qualifier, o spring vai chamar o Bean que tem o Primary
     public Motor motoraAspirado() {
         var motor = new Motor();
         motor.setCavalos(120);
