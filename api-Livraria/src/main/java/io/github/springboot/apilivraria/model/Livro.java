@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class Livro {
     @Enumerated(EnumType.STRING)
     @Column(name = "genero", length = 30, nullable = false)
     private GeneroLivro genero;
-    @Column(name= "preco", precision = 18, scale = 2, nullable = false)
+    @Column(name= "preco", precision = 12, nullable = false)
     private Double preco;
     @ManyToOne  // Muitos livros podem estar relacionados a um único autor.
     @JoinColumn(name = "id_autor")
